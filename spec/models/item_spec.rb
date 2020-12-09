@@ -58,34 +58,33 @@ RSpec.describe Item, type: :model do
       it 'category_idが1だと登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'status_idが1だと登録できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status Select")
+        expect(@item.errors.full_messages).to include('Status Select')
       end
       it 'fee_burden_idが1だと登録できない' do
         @item.fee_burden_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee burden Select")
+        expect(@item.errors.full_messages).to include('Fee burden Select')
       end
       it 'prefecture_idが1だと登録できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture Select")
+        expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it 'days_to_ship_idが1だと登録できない' do
         @item.days_to_ship_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days to ship Select")
+        expect(@item.errors.full_messages).to include('Days to ship Select')
       end
       it 'priceが300~9999999の間以外は登録できない' do
         @item.price = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price  Out of setting range")
+        expect(@item.errors.full_messages).to include('Price  Out of setting range')
       end
     end
   end
 end
-
