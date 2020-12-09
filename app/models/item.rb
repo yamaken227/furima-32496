@@ -7,16 +7,19 @@ class Item < ApplicationRecord
   belongs_to_active_hash :days_to_ship
   has_one_attached :image
 
-  validates :image, presence: true
-  validates :name, presence: true
-  validates :explanation, presence: true
-  validates :price, presence: true, 
-            :numericality => {
+  with_options presence: true do
+    validates :image, presence: true
+    validates :name, presence: true
+    validates :explanation, presence: true
+    validates :price
+  end
+
+  validates :price, numericality: {
               :greater_than_or_equal_to => 300,
               :less_than_or_equal_to => 9999999,
               :message => ' Out of setting range'
-            },
-            format: {
+            }
+  validates :price, numericality: {
               with: /\A[0-9]+\z/ , message:"Half-width number"
             }
 
