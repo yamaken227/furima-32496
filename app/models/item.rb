@@ -6,11 +6,12 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :days_to_ship
   has_one_attached :image
+  belongs_to :user
 
   with_options presence: true do
-    validates :image, presence: true
-    validates :name, presence: true
-    validates :explanation, presence: true
+    validates :image
+    validates :name
+    validates :explanation
     validates :price
   end
 

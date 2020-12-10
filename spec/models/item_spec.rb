@@ -80,8 +80,13 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Days to ship Select')
       end
-      it 'priceが300~9999999の間以外は登録できない' do
+      it 'priceが299以下の場合は登録できない' do
         @item.price = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price  Out of setting range')
+      end
+      it 'priceが10,000,000の場合は登録できない' do
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price  Out of setting range')
       end
