@@ -1,0 +1,2 @@
+class PurchaseManagement < ApplicationRecord
+end
