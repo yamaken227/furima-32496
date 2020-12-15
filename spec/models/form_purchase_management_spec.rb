@@ -7,7 +7,7 @@ RSpec.describe FormPurchaseManagement, type: :model do
     end
     context '商品が購入できる時' do
       it 'postal_code,prefecture_id,municipality,address,
-      phone_num,purchase_managementがあれば購入できる' do
+      phone_num,purchase_management,tokenがあれば購入できる' do
         expect(@form_purchase_management).to be_valid
       end
       it 'postal_codeにハイフンがあれば購入できる' do
@@ -68,6 +68,11 @@ RSpec.describe FormPurchaseManagement, type: :model do
         @form_purchase_management.phone_num = '111111111111'
         @form_purchase_management.valid?
         expect(@form_purchase_management.errors.full_messages).to include("Phone num Input only number")
+      end
+      it 'tokenが空だと購入できない' do
+        @form_purchase_management.token = nil
+        @form_purchase_management.valid?
+        expect(@form_purchase_management.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
