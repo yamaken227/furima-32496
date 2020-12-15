@@ -14,13 +14,6 @@ class PurchaseManagementsController < ApplicationController
       @form_purchase_management.save
       redirect_to root_path
     else
-      @form_purchase_management.postal_code = nil
-      @form_purchase_management.prefecture_id = nil
-      @form_purchase_management.municipality = nil
-      @form_purchase_management.address = nil
-      @form_purchase_management.building_name = nil
-      @form_purchase_management.phone_num = nil
-      @form_purchase_management.token = nil
       render :index
     end
   end
