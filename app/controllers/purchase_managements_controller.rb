@@ -8,7 +8,8 @@ class PurchaseManagementsController < ApplicationController
 
   def create
     @form_purchase_management = FormPurchaseManagement.new(form_purchase_management_params)
-    if @form_purchase_management.save
+    if @form_purchase_management.valid?
+      @form_purchase_management.save
       redirect_to root_path
     else
       render :index
