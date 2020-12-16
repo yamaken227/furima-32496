@@ -3,11 +3,11 @@ class PurchaseManagementsController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
+    redirect_to root_path if current_user.id == @item.user_id || @item.purchase_management
     @form_purchase_management = FormPurchaseManagement.new
   end
 
   def create
-    redirect_to root_path if current_user.id == @item.user_id || @item.purchase_management
     @form_purchase_management = FormPurchaseManagement.new(form_purchase_management_params)
     if @form_purchase_management.valid?
       pay_item
