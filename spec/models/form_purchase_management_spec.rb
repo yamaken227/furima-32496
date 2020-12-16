@@ -18,6 +18,10 @@ RSpec.describe FormPurchaseManagement, type: :model do
         @form_purchase_management.prefecture_id = 2
         expect(@form_purchase_management).to be_valid
       end
+      it 'building_nameが空でも購入できる' do
+        @form_purchase_management.building_name = nil
+        expect(@form_purchase_management).to be_valid
+      end
       it 'phone_numが11桁の数字なら購入できる' do
         @form_purchase_management.phone_num = '12121212121'
         expect(@form_purchase_management).to be_valid
@@ -68,6 +72,16 @@ RSpec.describe FormPurchaseManagement, type: :model do
         @form_purchase_management.phone_num = '111111111111'
         @form_purchase_management.valid?
         expect(@form_purchase_management.errors.full_messages).to include('Phone num Input only number')
+      end
+      it 'user_idが空だと購入できない' do
+        @form_purchase_management.user_id = nil
+        @form_purchase_management.valid?
+        expect(@form_purchase_management.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空だと購入できない' do
+        @form_purchase_management.item_id = nil
+        @form_purchase_management.valid?
+        expect(@form_purchase_management.errors.full_messages).to include("Item can't be blank")
       end
       it 'tokenが空だと購入できない' do
         @form_purchase_management.token = nil
