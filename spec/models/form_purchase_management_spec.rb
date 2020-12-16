@@ -14,6 +14,9 @@ RSpec.describe FormPurchaseManagement, type: :model do
         @form_purchase_management.building_name = nil
         expect(@form_purchase_management).to be_valid
       end
+      it '全て正常' do
+        expect(@form_purchase_management.valid?).to eq true
+     end
     end
     context '商品が購入できない時' do
       it 'postal_codeが空だと購入できない' do
