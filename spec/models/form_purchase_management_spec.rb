@@ -10,20 +10,8 @@ RSpec.describe FormPurchaseManagement, type: :model do
       phone_num,purchase_management,tokenがあれば購入できる' do
         expect(@form_purchase_management).to be_valid
       end
-      it 'postal_codeにハイフンがあれば購入できる' do
-        @form_purchase_management.postal_code = '111-1111'
-        expect(@form_purchase_management).to be_valid
-      end
-      it 'prefecture_idが1以外なら購入できる' do
-        @form_purchase_management.prefecture_id = 2
-        expect(@form_purchase_management).to be_valid
-      end
       it 'building_nameが空でも購入できる' do
         @form_purchase_management.building_name = nil
-        expect(@form_purchase_management).to be_valid
-      end
-      it 'phone_numが11桁の数字なら購入できる' do
-        @form_purchase_management.phone_num = '12121212121'
         expect(@form_purchase_management).to be_valid
       end
     end
